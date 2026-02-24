@@ -6,7 +6,7 @@ import { useTaskContext } from '@/context/TaskContext';
 import { useToast } from '@/context/ToastContext';
 import TaskForm from '@/components/TaskForm';
 import { Draggable } from '@hello-pangea/dnd';
-import { FiEdit, FiTrash2 } from 'react-icons/fi';
+import { FiEdit, FiTrash2, FiMoreVertical } from 'react-icons/fi';
 
 interface TaskCardProps {
     task: Task;
@@ -30,6 +30,7 @@ export default function TaskCard({ task, index }: TaskCardProps) {
     const { addToast } = useToast();
     const [isEditing, setIsEditing] = useState(false);
     const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const assignee = users.find(u => u.id === task.assigneeId);
 
@@ -64,21 +65,37 @@ export default function TaskCard({ task, index }: TaskCardProps) {
                         <h3 className="text-lg font-semibold text-slate-800 break-words">
                             {task.title}
                         </h3>
-                        <div className="flex gap-2 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="relative shrink-0">
                             <button
-                                onClick={(e) => { e.stopPropagation(); setIsEditing(true); }}
-                                className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
-                                title="Edit Task"
+                                onClick={(e) => { e.stopPropagation(); setIsMenuOpen(!isMenuOpen); }}
+                                className="p-1.5 text-slate-400 hover:text-slate-600 rounded-md transition-colors"
+                                title="Task Options"
                             >
-                                <FiEdit size={18} />
+                                <FiMoreVertical size={18} />
                             </button>
-                            <button
-                                onClick={(e) => { e.stopPropagation(); setShowConfirmDelete(true); }}
-                                className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors"
-                                title="Delete Task"
-                            >
-                                <FiTrash2 size={18} />
-                            </button>
+
+                            {isMenuOpen && (
+                                <>
+                                    <div
+                                        className="fixed inset-0 z-10"
+                                        onClick={(e) => { e.stopPropagation(); setIsMenuOpen(false); }}
+                                    />
+                                    <div className="absolute right-0 mt-1 w-36 bg-white rounded-lg shadow-lg border border-slate-100 z-20 py-1 flex flex-col">
+                                        <button
+                                            onClick={(e) => { e.stopPropagation(); setIsMenuOpen(false); setIsEditing(true); }}
+                                            className="px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2 text-left w-full transition-colors"
+                                        >
+                                            <FiEdit size={14} className="text-blue-500" /> Edit Task
+                                        </button>
+                                        <button
+                                            onClick={(e) => { e.stopPropagation(); setIsMenuOpen(false); setShowConfirmDelete(true); }}
+                                            className="px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2 text-left w-full transition-colors"
+                                        >
+                                            <FiTrash2 size={14} className="text-red-500" /> Delete Task
+                                        </button>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
 
