@@ -27,7 +27,7 @@ export default function TaskControls({
 }: TaskControlsProps) {
 
     return (
-        <div className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm mb-6 flex flex-col gap-4">
+        <div className="bg-white p-4 rounded-xl border border-slate-100 shadow-md shadow-slate-700/15 hover:shadow-lg hover:shadow-slate-700/25 transition-all duration-300 mb-6 flex flex-col gap-4">
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
                 <div className="w-full md:w-1/3 relative">
                     <FiSearch className="absolute left-3 top-2.5 text-gray-400" size={20} />

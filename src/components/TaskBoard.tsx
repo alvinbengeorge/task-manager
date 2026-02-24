@@ -42,7 +42,7 @@ export default function TaskBoard() {
                 </div>
                 <button
                     onClick={() => setIsFormOpen(true)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-lg transition-colors shadow-sm whitespace-nowrap flex items-center gap-2"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-lg transition-all duration-300 shadow-md shadow-slate-700/25 hover:shadow-lg hover:shadow-slate-700/40 whitespace-nowrap flex items-center gap-2"
                 >
                     <FiPlus size={20} />
                     Create Task
@@ -74,7 +74,7 @@ export default function TaskBoard() {
 
             {isFormOpen && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/40 overflow-y-auto">
-                    <div className="bg-white rounded-2xl shadow-lg w-full max-w-lg overflow-hidden border border-slate-100 p-6 m-auto">
+                    <div className="bg-white rounded-2xl shadow-2xl shadow-slate-700/25 w-full max-w-lg overflow-hidden border border-slate-100 p-6 m-auto">
                         <TaskForm onClose={() => setIsFormOpen(false)} />
                     </div>
                 </div>

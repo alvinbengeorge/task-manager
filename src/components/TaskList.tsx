@@ -70,7 +70,7 @@ export default function TaskList({ tasks }: TaskListProps) {
             <DragDropContext onDragEnd={handleDragEnd}>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
                     {columns.map((status) => (
-                        <div key={status} className="bg-slate-50/80 rounded-xl p-4 border border-slate-100 flex flex-col h-full min-h-[500px] shadow-sm">
+                        <div key={status} className="bg-slate-50/80 rounded-xl p-4 border border-slate-100 flex flex-col h-full min-h-[500px] shadow-md shadow-slate-700/15 hover:shadow-lg hover:shadow-slate-700/25 transition-all duration-300">
                             <h3 className="font-semibold text-slate-700 mb-4 flex justify-between items-center">
                                 {status}
                                 <span className="bg-white text-xs py-0.5 px-2 rounded-full border border-slate-200 text-slate-500 shadow-sm">

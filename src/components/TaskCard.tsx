@@ -41,7 +41,7 @@ export default function TaskCard({ task, index }: TaskCardProps) {
 
     if (isEditing) {
         return (
-            <div className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm mb-4">
+            <div className="bg-white p-4 rounded-xl border border-slate-100 shadow-lg shadow-slate-700/25 mb-4">
                 <TaskForm existingTask={task} onClose={() => setIsEditing(false)} />
             </div>
         );
@@ -58,7 +58,7 @@ export default function TaskCard({ task, index }: TaskCardProps) {
                         ...provided.draggableProps.style,
                         opacity: snapshot.isDragging ? 0.8 : 1
                     }}
-                    className={`bg-white p-5 rounded-xl border ${snapshot.isDragging ? 'border-blue-300 shadow-lg' : 'border-slate-100 shadow-sm'} transition-all hover:shadow-md block w-full text-left group mb-4`}
+                    className={`bg-white p-5 rounded-xl border ${snapshot.isDragging ? 'border-blue-300 shadow-xl shadow-slate-700/35' : 'border-slate-100 shadow-md shadow-slate-700/15 hover:shadow-lg hover:shadow-slate-700/25'} transition-all duration-300 block w-full text-left group mb-4`}
                 >
                     <div className="flex justify-between items-start gap-4 mb-3">
                         <h3 className="text-lg font-semibold text-slate-800 break-words">
